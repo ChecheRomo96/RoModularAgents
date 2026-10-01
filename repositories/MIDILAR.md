@@ -2,37 +2,40 @@
 
 ## Purpose
 
-MIDILAR owns MIDI protocol, transport, routing, device, and real-time
-music-technology concerns. The current repository is legacy code pending a
-deliberate reconstruction.
+MIDILAR owns MIDI protocol data, parsing, routing, timing, transports and
+devices. It is being rebuilt from scratch on the `rebuild` branch, following
+its `ACTION_PLAN.md`, and merges into `main` once stable.
 
 ## Rules
 
 - Preserve `Foundation <- MCC <- MIDILAR`. General utilities belong in
-  Foundation and music-theory concepts belong in MCC.
-- Treat source, examples, tests, CMake files, and documentation as migration
-  evidence. Do not broadly rewrite or delete them before understanding their
-  behavior and replacement destination.
-- MIDILAR has not adopted RoModularBuild. Do not introduce a partial migration
-  without an explicit task and validation plan.
-- Preserve the current C++17 requirement until compatibility is documented and
-  tested.
-- Keep real-time and embedded paths allocation-conscious, exception-free where
-  the target requires it, and free from mandatory full-STL assumptions.
-- Keep Arduino and desktop examples aligned around shared public API examples;
-  tests remain under `tests/`.
-- Verify legacy documentation and package claims against implementation.
-- `CMakeCache.txt` is currently tracked. Its removal is a deliberate cleanup,
-  not incidental generated-file deletion.
+  Foundation, music theory in MCC, and signal processing in the future DSPCore
+  library; only MIDI concepts belong in MIDILAR.
+- Work on the `rebuild` branch, one approved `ACTION_PLAN.md` phase at a time.
+  The removed legacy code is design input from the Git history, not code to
+  restore.
+- Treat presets and scripts as the supported build interface, with Bash and
+  PowerShell parity. Treat the pinned `tools/RoModularBuild` as read-only.
+- Real-time paths never allocate memory dynamically and never throw
+  exceptions; value types are trivially copyable with compile-time size
+  budgets.
+- Keep the MIDI-domain specification ahead of the code, and keep public
+  headers, examples, tests, version metadata, `ACTION_PLAN.md`, `CHANGELOG.md`
+  and Doxygen synchronized.
+- Separate compile/link validation from hardware execution evidence.
 
-## Current entry points
+## Entry points
+
+Use the matching PowerShell script on Windows:
 
 ```text
-cmake -B build -S . -DMIDILAR_TESTING=ON -DMIDILAR_EXAMPLES=ON
-cmake --build build
-ctest --test-dir build
+./scripts/configure.sh <preset> [--fresh] [-- <cmake-options>]
+./scripts/build.sh <preset> [--fresh] [--config <configuration>] [--examples-on]
+./scripts/test.sh <preset> [--fresh] [--config <configuration>]
+./scripts/install.sh <preset>
+./scripts/export.sh <preset> [--fresh] [--examples-on]
+./scripts/test-package.sh <preset> [--fresh]
+./scripts/test-arduino.sh [--fqbn <board>] [--foundation <dir>] [--mcc <dir>]
+./scripts/analyze.sh <preset> [--fresh]
+./scripts/docs.sh [--fresh]
 ```
-
-The current presets are legacy convenience configurations, not yet a
-RoModularBuild compatibility contract.
-
