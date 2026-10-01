@@ -25,6 +25,7 @@ REQUIRED_FILES = (
 
 REPOSITORY_ADAPTERS = (
     "Foundation.md",
+    "DspCore.md",
     "MCC.md",
     "MIDILAR.md",
     "RoModular.md",

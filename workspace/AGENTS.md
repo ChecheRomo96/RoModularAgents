@@ -16,6 +16,7 @@ The expected repositories are:
 - `RoModularAgents`: provider-neutral contracts, adapters, and skills.
 - `RoModularBuild`: reusable build infrastructure.
 - `Foundation`: low-level portable C++ library.
+- `DspCore`: portable signal-processing library.
 - `MCC`: Music Composition Core.
 - `MIDILAR`: legacy MIDI and music-technology code pending reconstruction.
 
