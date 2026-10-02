@@ -2,18 +2,19 @@
 
 ## Purpose
 
-MIDILAR owns MIDI protocol data, parsing, routing, timing, transports and
-devices. It is being rebuilt from scratch on the `rebuild` branch, following
-its `ACTION_PLAN.md`, and merges into `main` once stable.
+MIDILAR owns MIDI protocol data, wire-format translation (MIDI 1.0 bytes, USB
+MIDI 1.0 events, UMP), timing and devices. It was rebuilt from scratch and
+released as 0.2.0 on `main`; its `ACTION_PLAN.md` lists the remaining phases
+(MIDI-CI is deferred).
 
 ## Rules
 
 - Preserve `Foundation <- MCC <- MIDILAR`. General utilities belong in
-  Foundation, music theory in MCC, and signal processing in the future DSPCore
-  library; only MIDI concepts belong in MIDILAR.
-- Work on the `rebuild` branch, one approved `ACTION_PLAN.md` phase at a time.
-  The removed legacy code is design input from the Git history, not code to
-  restore.
+  Foundation, music theory in MCC, and signal processing in DspCore; only MIDI
+  concepts belong in MIDILAR. Hardware transports (UART, USB stacks, desktop
+  MIDI APIs) are separate libraries built on MIDILAR's translations.
+- Work on `main`, one approved `ACTION_PLAN.md` phase at a time. The removed
+  legacy code is design input from the Git history, not code to restore.
 - Treat presets and scripts as the supported build interface, with Bash and
   PowerShell parity. Treat the pinned `tools/RoModularBuild` as read-only.
 - Real-time paths never allocate memory dynamically and never throw
