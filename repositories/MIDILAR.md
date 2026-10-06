@@ -9,7 +9,8 @@ released as 0.2.0 on `main`; its `ACTION_PLAN.md` lists the remaining phases
 
 ## Rules
 
-- Preserve `Foundation <- MCC <- MIDILAR`. General utilities belong in
+- Preserve `Foundation <- (DspCore, MCC) <- MIDILAR`, with CPSTL planned below
+  Foundation as the portable `std` vocabulary. General utilities belong in
   Foundation, music theory in MCC, and signal processing in DspCore; only MIDI
   concepts belong in MIDILAR. Hardware transports (UART, USB stacks, desktop
   MIDI APIs) are separate libraries built on MIDILAR's translations.
@@ -17,8 +18,13 @@ released as 0.2.0 on `main`; its `ACTION_PLAN.md` lists the remaining phases
   legacy code is design input from the Git history, not code to restore.
 - Treat presets and scripts as the supported build interface, with Bash and
   PowerShell parity. Treat the pinned `tools/RoModularBuild` as read-only.
-- Real-time paths never allocate memory dynamically and never throw
-  exceptions; value types are trivially copyable with compile-time size
+- Code never throws exceptions. Operations that change a container's
+  size may allocate; the library makes no real-time assumptions about the
+  caller, and implementers who modify storage in time-critical code are
+  expected to reserve the space beforehand. Framework types report allocation
+  failure through their result (`bool` or invalid state), never by exceptions
+  or undefined behavior (SPEC-RT-1).
+- Value types are trivially copyable with compile-time size
   budgets.
 - Keep the MIDI-domain specification ahead of the code, and keep public
   headers, examples, tests, version metadata, `ACTION_PLAN.md`, `CHANGELOG.md`

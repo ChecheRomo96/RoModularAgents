@@ -15,8 +15,9 @@ points without absorbing product code or shared build engines.
 - Keep the workspace repository manifest and bootstrap scripts cross-platform.
 - RoModular owns workspace composition, not the shared agent contract or
   reusable engineering skills; those belong in RoModularAgents.
-- RoModularBuild owns generic build mechanics. Foundation, MCC, and MIDILAR own
-  their source, tests, examples, packages, and release policy.
+- RoModularBuild owns generic build mechanics. CPSTL, Foundation, DspCore,
+  MCC, and MIDILAR own their source, tests, examples, packages, and release
+  policy.
 - Treat planned repositories or capabilities explicitly as planned.
 
 ## Validation

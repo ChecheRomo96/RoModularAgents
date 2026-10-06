@@ -3,7 +3,8 @@
 ## Purpose
 
 RoModularBuild is project-independent build infrastructure. Keep it reusable
-by Foundation, MCC, and future consumers without importing product policy.
+by CPSTL, Foundation, DspCore, MCC, MIDILAR, and future consumers without
+importing product policy.
 
 ## Rules
 
