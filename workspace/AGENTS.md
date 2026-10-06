@@ -15,10 +15,16 @@ The expected repositories are:
 - `RoModular`: ecosystem documentation and workspace orchestration.
 - `RoModularAgents`: provider-neutral contracts, adapters, and skills.
 - `RoModularBuild`: reusable build infrastructure.
+- `CPSTL`: portable `std` vocabulary (Cross-Platform STL); bottom of the
+  dependency chain.
 - `Foundation`: low-level portable C++ library.
 - `DspCore`: portable signal-processing library.
 - `MCC`: Music Composition Core.
-- `MIDILAR`: legacy MIDI and music-technology code pending reconstruction.
+- `MIDILAR`: MIDI protocol data, wire-format translation, timing and devices.
+
+Dependencies point down the chain
+`CPSTL <- Foundation <- (DspCore, MCC) <- MIDILAR`; Foundation building on
+CPSTL is the planned next step.
 
 Repository proximity does not grant cross-repository authority. Preserve
 unrelated changes and do not modify a sibling repository unless the user

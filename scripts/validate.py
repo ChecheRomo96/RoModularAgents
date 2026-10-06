@@ -24,6 +24,7 @@ REQUIRED_FILES = (
 )
 
 REPOSITORY_ADAPTERS = (
+    "CPSTL.md",
     "Foundation.md",
     "DspCore.md",
     "MCC.md",

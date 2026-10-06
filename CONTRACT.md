@@ -18,9 +18,14 @@ compatible as the ecosystem evolves.
 5. Use each repository's checked-in scripts and presets as its supported
    workflow. Do not create a competing manual procedure without a documented
    reason.
-6. Preserve desktop and embedded compatibility. Do not introduce dynamic
-   allocation, exceptions, STL dependencies, or a newer language requirement
-   into embedded paths without an explicit design decision.
+6. Preserve desktop and embedded compatibility. Do not introduce exceptions,
+   STL dependencies, or a newer language requirement into embedded paths
+   without an explicit design decision. Dynamic allocation is allowed:
+   operations that change a container's size may allocate, libraries make no
+   real-time assumptions about the caller, and implementers who modify
+   storage in time-critical code reserve the space beforehand. Allocation
+   failure is reported through results, never by exceptions or undefined
+   behavior.
 7. Keep public API, examples, tests, package metadata, changelog, and Doxygen
    documentation synchronized when a change affects them.
 8. Validate changes in proportion to their risk and state clearly what was and

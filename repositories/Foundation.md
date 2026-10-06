@@ -3,7 +3,11 @@
 ## Purpose
 
 Foundation is the low-level portable C++ library of RoModular. Keep it
-independently buildable for desktop and embedded consumers.
+independently buildable for desktop and embedded consumers. The planned
+dependency chain is `CPSTL <- Foundation <- (DspCore, MCC) <- MIDILAR`:
+Foundation is next to build on CPSTL for its `std` vocabulary instead of
+reimplementing `std` types. Until that change lands, Foundation has no
+RoModular library dependency.
 
 ## Rules
 
