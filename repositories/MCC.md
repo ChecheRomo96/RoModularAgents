@@ -3,7 +3,7 @@
 ## Purpose
 
 MCC is the portable music-theory library. Preserve the dependency direction
-`Foundation <- MCC <- MIDILAR` and keep it independently buildable for desktop
+`Foundation <- MCC <- MIDILAR` within the broader chain and keep it independently buildable for desktop
 and embedded consumers. CPSTL is below Foundation
 (`CPSTL <- Foundation <- (DspCore, MCC) <- MIDILAR`); MCC reaches it only
 through Foundation.

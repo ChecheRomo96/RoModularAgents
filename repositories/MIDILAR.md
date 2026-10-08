@@ -42,7 +42,7 @@ Use the matching PowerShell script on Windows:
 ./scripts/install.sh <preset>
 ./scripts/export.sh <preset> [--fresh] [--examples-on]
 ./scripts/test-package.sh <preset> [--fresh]
-./scripts/test-arduino.sh [--fqbn <board>] [--foundation <dir>] [--mcc <dir>]
+./scripts/test-arduino.sh [--fqbn <board>] [--foundation <dir>] [--dspcore <dir>] [--mcc <dir>]
 ./scripts/analyze.sh <preset> [--fresh]
 ./scripts/docs.sh [--fresh]
 ```
