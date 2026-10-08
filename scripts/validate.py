@@ -48,6 +48,7 @@ REQUIRED_WORKFLOWS = (
     "coordinated-development.md",
     "release.md",
     "repository-audit.md",
+    "romodular-cli.md",
 )
 
 SKILL_NAME = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")

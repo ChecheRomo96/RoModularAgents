@@ -36,6 +36,11 @@ Version ownership, release evidence and workspace pins are defined in
 [VERSIONING.md](VERSIONING.md). `scripts/inspect-workspace.py <repos-root>`
 performs the common read-only structural inspection.
 
+The future host-side `romodular` orchestrator is defined by the
+[CLI orchestration contract](workflows/romodular-cli.md). Its first commands
+are read-only workspace inspection (`doctor`, `status`, and `sync --dry-run`)
+and it delegates all build and target work to repository-owned entry points.
+
 Repository-local `AGENTS.md` files route an agent to this repository when it is
 available and retain enough local guidance to remain safe and useful in a
 standalone checkout.
