@@ -1,20 +1,20 @@
 # Changelog
 
-## Unreleased
+## 0.2.0
 
 - Add the CPSTL repository adapter (portable `std` vocabulary at the bottom of
-  the chain `CPSTL <- Foundation <- (DspCore, MCC) <- MIDILAR`) and
-  register it in `scripts/validate.py`. The Foundation, DspCore, MCC, MIDILAR,
-  RoModular and RoModularBuild adapters state that chain or list CPSTL.
-- `workspace/AGENTS.md` lists CPSTL, describes MIDILAR as the released MIDI
-  library instead of legacy code pending reconstruction, and states the
-  dependency direction.
-
-- Contract rule 6 and the MCC, MIDILAR and DspCore adapters no longer forbid
-  dynamic allocation: operations that change a container's size may
-  allocate, libraries make no real-time assumptions about the caller, and
-  implementers reserve space beforehand for time-critical code. Allocation
-  failure is reported through results, never by exceptions.
+  the chain `CPSTL <- Foundation <- (DspCore, MCC) <- MIDILAR`) and register it
+  in `scripts/validate.py`. The repository adapters state that chain or list
+  CPSTL where relevant.
+- Update the embedded-allocation policy: operations that change a container's
+  size may allocate, time-critical callers reserve capacity beforehand, and
+  allocation failure is reported through results rather than exceptions.
+- Add a provider-neutral coordinated development model with an ecosystem
+  coordinator and bounded repository-developer assignments.
+- Add the coordinated-development workflow, developer handoff format, and
+  coordinator reporting contract.
+- Add the `romodular-coordinate-development` Agent Skill and validate the
+  required coordination roles and workflow.
 
 ## 0.1.0
 

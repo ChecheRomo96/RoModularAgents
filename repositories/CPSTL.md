@@ -39,7 +39,7 @@ desktop and embedded consumers.
 - A change to a `cpstd` interface affects every RoModular library above it;
   report such changes to the user before making them.
 - Separate compile/link validation from hardware or simulator execution
-  evidence.
+evidence.
 
 ## Entry points
 

@@ -10,6 +10,11 @@ Before working in any repository:
 4. Read the root `AGENTS.md` of every repository in scope when it exists.
 5. Use the relevant installed RoModular skill for repeatable workflows.
 
+For a delivery involving multiple repositories or explicit coordination, use
+the installed `romodular-coordinate-development` skill. The ecosystem
+coordinator is the user-facing interface; activate a repository developer only
+for a repository that the user has put in scope.
+
 The expected repositories are:
 
 - `RoModular`: ecosystem documentation and workspace orchestration.

@@ -34,6 +34,21 @@ REPOSITORY_ADAPTERS = (
     "RoModularBuild.md",
 )
 
+REQUIRED_ROLES = (
+    "architecture-auditor.md",
+    "documentation-curator.md",
+    "ecosystem-coordinator.md",
+    "release-auditor.md",
+    "repository-developer.md",
+    "repository-maintainer.md",
+)
+
+REQUIRED_WORKFLOWS = (
+    "coordinated-development.md",
+    "release.md",
+    "repository-audit.md",
+)
+
 SKILL_NAME = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 CENTRAL_REFERENCE = re.compile(r"\.\./\.\./\.\./RoModularAgents/([^\s`)]+)")
 UNFINISHED_MARKERS = ("TO" + "DO", "T" + "BD")
@@ -135,6 +150,14 @@ def main() -> int:
     for adapter in REPOSITORY_ADAPTERS:
         if not (ROOT / "repositories" / adapter).is_file():
             errors.append(f"missing repository adapter: repositories/{adapter}")
+
+    for role in REQUIRED_ROLES:
+        if not (ROOT / "roles" / role).is_file():
+            errors.append(f"missing role: roles/{role}")
+
+    for workflow in REQUIRED_WORKFLOWS:
+        if not (ROOT / "workflows" / workflow).is_file():
+            errors.append(f"missing workflow: workflows/{workflow}")
 
     skill_directories = sorted(path for path in SKILLS_ROOT.iterdir() if path.is_dir())
     if not skill_directories:
