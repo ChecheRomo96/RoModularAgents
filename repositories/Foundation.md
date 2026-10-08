@@ -3,7 +3,9 @@
 ## Purpose
 
 Foundation is the low-level portable C++ library of RoModular. Keep it
-independently buildable for desktop and embedded consumers.
+independently buildable for desktop and embedded consumers. It uses CPSTL as
+its portable `std` vocabulary in the dependency chain
+`CPSTL <- Foundation <- (DspCore, MCC) <- MIDILAR`.
 
 ## Rules
 
@@ -39,4 +41,3 @@ Use the matching PowerShell script on Windows:
 ./scripts/test-stm32.sh <preset> [--fresh]
 ./scripts/docs.sh [--fresh]
 ```
-

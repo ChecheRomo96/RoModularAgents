@@ -4,15 +4,20 @@
 
 DspCore is the portable signal-processing library. Preserve the dependency
 direction `Foundation <- DspCore <- MIDILAR` and keep it independently
-buildable for desktop and embedded consumers.
+buildable for desktop and embedded consumers. CPSTL is below
+Foundation (`CPSTL <- Foundation <- (DspCore, MCC) <- MIDILAR`); DspCore
+reaches it only through Foundation.
 
 ## Rules
 
 - Treat presets and scripts as the supported build interface.
 - Initialize the pinned `tools/RoModularBuild` submodule in fresh checkouts.
 - Treat RoModularBuild as read-only while working in DspCore.
-- Preserve C++17 and keep embedded code allocation-conscious, exception-free,
-  and independent of mandatory full-STL facilities.
+- Preserve C++17 and keep embedded code exception-free and independent of
+  mandatory full-STL facilities. Operations that change a container's size
+  may allocate; libraries make no real-time assumptions about the caller, and
+  implementers reserve space beforehand for time-critical code. Allocation
+  failure is reported through results.
 - Keep MIDI concepts in MIDILAR and music theory in MCC; only signal
   processing belongs in DspCore.
 - Follow `ACTION_PLAN.md` phase by phase; each phase needs the user's
