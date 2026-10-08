@@ -32,6 +32,10 @@ bundles into the workspace-level Codex and Claude discovery directories. The
 canonical source remains this repository; generated workspace copies should
 not be edited directly.
 
+Version ownership, release evidence and workspace pins are defined in
+[VERSIONING.md](VERSIONING.md). `scripts/inspect-workspace.py <repos-root>`
+performs the common read-only structural inspection.
+
 Repository-local `AGENTS.md` files route an agent to this repository when it is
 available and retain enough local guidance to remain safe and useful in a
 standalone checkout.

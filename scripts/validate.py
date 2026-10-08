@@ -19,6 +19,7 @@ REQUIRED_FILES = (
     "LICENSE",
     "README.md",
     "VERSION",
+    "VERSIONING.md",
     "workspace/AGENTS.md",
     "workspace/CLAUDE.md",
 )
